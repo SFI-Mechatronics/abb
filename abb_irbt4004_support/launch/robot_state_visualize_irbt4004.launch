@@ -1,0 +1,23 @@
+<!--
+  Manipulator specific version of the state visualizer.
+
+
+  Usage:
+    robot_state_visualize_irbt4004.launch robot_ip:=<value>
+-->
+<launch>
+  <arg name="robot_ip" doc="IP of the controller" />
+
+  <rosparam command="load" file="$(find abb_irbt4004_support)/config/joint_names_irbt4004.yaml" />
+
+  <include file="$(find abb_driver)/launch/robot_interface.launch">
+    <arg name="robot_ip"    value="$(arg robot_ip)" />
+  </include>
+
+  <node name="robot_state_publisher" pkg="robot_state_publisher" 
+    type="robot_state_publisher" />
+
+  <include file="$(find abb_irb4004_support)/launch/load_irbt4004.launch" />
+
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find industrial_robot_client)/config/robot_state_visualize.rviz" required="true" />
+</launch>

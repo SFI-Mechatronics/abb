@@ -8,7 +8,7 @@
 <!--    <link name="${prefix}world"/>-->
 
     <!-- link list -->
-    <link name="${prefix}base_link"> <!--track_start-->
+    <link name="${prefix}track_left"> <!--track_start-->
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
@@ -76,28 +76,28 @@
       </collision>
     </link>
 
-    <!-- no end section
-    <link name="${prefix}track_end">
+    <!--Right section-->
+<!--    <link name="${prefix}track_right">
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
-          <mesh filename="package://abb_irbt4004_support/meshes/irb4400/visual/Track_End.stl"/>
+          <mesh filename="package://abb_irbt4004_support/meshes/irbt4004/visual/Track_End.stl"/>
         </geometry>
         <xacro:material_abb_orange />
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
-          <mesh filename="package://abb_irbt4004_support/meshes/irb4400/collision/Track_End.stl"/>
+          <mesh filename="package://abb_irbt4004_support/meshes/irbt4004/collision/Track_End.stl"/>
         </geometry>
         <xacro:material_abb_orange />
       </collision>
-    </link>
-    -->
+    </link>-->
 
+    <!--Left carriage-->
     <link name="${prefix}carriage">
       <visual>
-        <origin xyz="0 0 0" rpy="0 0 0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
           <mesh filename="package://abb_irbt4004_support/meshes/irbt4004/visual/Carriage_left.stl"/>
         </geometry>
@@ -111,11 +111,30 @@
         <xacro:material_abb_dark_gray />
       </collision>
     </link>
+
+    <!--Right carriage-->
+<!--    <link name="${prefix}carriage2">
+      <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://abb_irbt4004_support/meshes/irbt4004/visual/Carriage_right.stl"/>
+        </geometry>
+        <xacro:material_abb_dark_gray />
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://abb_irbt4004_support/meshes/irbt4004/collision/Carriage_right.stl"/>
+        </geometry>
+        <xacro:material_abb_dark_gray />
+      </collision>
+    </link>-->
+
     <!-- end of link list -->
 
     <!-- joint list -->
     <joint name="${prefix}fixed_track_mid_1" type="fixed">
-      <parent link="${prefix}base_link"/>
+      <parent link="${prefix}track_left"/>
       <child link="${prefix}track_mid_1"/>
       <origin xyz="0.000 0.000 0.000" rpy="0 0 0"/>
     </joint>
@@ -132,22 +151,33 @@
       <origin xyz="1.000 0.000 0.000" rpy="0 0 0"/>
     </joint>
 
-    <!-- no end section
-    <joint name="${prefix}fixed_track_end" type="fixed">
+    <!--Track end-->
+<!--    <joint name="${prefix}fixed_track_right" type="fixed">
       <parent link="${prefix}track_mid_3"/>
-      <child link="${prefix}track_end"/>
+      <child link="${prefix}track_right"/>
       <origin xyz="1.000 0.000 0.000" rpy="0 0 0"/>
-    </joint>
-    -->
+    </joint>-->
 
+    <!--Left carriage-->
     <joint name="${prefix}joint_carriage" type="prismatic">
-      <parent link="${prefix}base_link"/>
+      <parent link="${prefix}track_left"/>
       <child link="${prefix}carriage"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
       <axis xyz="1 0 0"/>
       <limit effort="0" lower="0.000" upper="3.700" velocity="2.000"/> <!-- Product specification - IRBT 4004/6004/7004 -->
     </joint>
 
-    <!-- offset to center base plate for robot mounting position
+    <!--Right carriage-->
+<!--    <joint name="${prefix}joint_carriage2" type="prismatic">
+      <parent link="${prefix}track_right"/>
+      <child link="${prefix}carriage2"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <axis xyz="-1 0 0"/>
+      <limit effort="0" lower="0.000" upper="3.700" velocity="2.000"/>
+    </joint>-->
+
+
+<!-- offset to center base plate for robot mounting position
     <joint name="${prefix}fixed_base_link" type="fixed">
       <parent link="${prefix}carriage"/>
       <child link="${prefix}base_link"/>
@@ -155,14 +185,6 @@
     </joint>-->
     <!-- end of joint list -->
 
-
-<!-- ROS base_link to ABB World Coordinates transform -->
-    <link name="${prefix}base" />
-    <joint name="${prefix}base_link-base" type="fixed">
-      <origin xyz="0 0 0" rpy="0 0 0"/>
-      <parent link="${prefix}base_link"/>
-      <child link="${prefix}base"/>
-    </joint>
 
   </xacro:macro>
 </robot>

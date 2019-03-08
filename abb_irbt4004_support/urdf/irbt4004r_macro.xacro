@@ -4,24 +4,23 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
   <xacro:include filename="$(find abb_resources)/urdf/common_materials.xacro"/>
 
-  <xacro:macro name="abb_irbt4004" params="prefix">
+  <xacro:macro name="abb_irbt4004r" params="prefix">
 
-    <!-- link zero-->
-<!--    <link name="${prefix}world"/>-->
 
     <!-- link list -->
-    <link name="${prefix}track_left"> <!--track_start-->
+    <!--Right section-->
+    <link name="${prefix}track_right">
       <visual>
-        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <origin xyz="-2.5 0 0" rpy="0 0 0"/>
         <geometry>
-          <mesh filename="package://abb_irbt4004_support/meshes/irbt4004/visual/Track_Start.stl"/>
+          <mesh filename="package://abb_irbt4004_support/meshes/irbt4004/visual/Track_End.stl"/>
         </geometry>
         <xacro:material_abb_orange />
       </visual>
       <collision>
-        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <origin xyz="-2.5 0 0" rpy="0 0 0"/>
         <geometry>
-          <mesh filename="package://abb_irbt4004_support/meshes/irbt4004/collision/Track_Start.stl"/>
+          <mesh filename="package://abb_irbt4004_support/meshes/irbt4004/collision/Track_End.stl"/>
         </geometry>
         <xacro:material_abb_orange />
       </collision>
@@ -29,14 +28,14 @@
 
     <link name="${prefix}track_mid_1">
       <visual>
-        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <origin xyz="-2.5 0 0" rpy="0 0 0"/>
         <geometry>
           <mesh filename="package://abb_irbt4004_support/meshes/irbt4004/visual/Track_Mid.stl"/>
         </geometry>
         <xacro:material_abb_orange />
       </visual>
       <collision>
-        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <origin xyz="-2.5 0 0" rpy="0 0 0"/>
         <geometry>
           <mesh filename="package://abb_irbt4004_support/meshes/irbt4004/collision/Track_Mid.stl"/>
         </geometry>
@@ -46,14 +45,14 @@
 
     <link name="${prefix}track_mid_2">
       <visual>
-        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <origin xyz="-2.5 0 0" rpy="0 0 0"/>
         <geometry>
           <mesh filename="package://abb_irbt4004_support/meshes/irbt4004/visual/Track_Mid.stl"/>
         </geometry>
         <xacro:material_abb_orange />
       </visual>
       <collision>
-        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <origin xyz="-2.5 0 0" rpy="0 0 0"/>
         <geometry>
           <mesh filename="package://abb_irbt4004_support/meshes/irbt4004/collision/Track_Mid.stl"/>
         </geometry>
@@ -63,14 +62,14 @@
 
     <link name="${prefix}track_mid_3">
       <visual>
-        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <origin xyz="-2.5 0 0" rpy="0 0 0"/>
         <geometry>
           <mesh filename="package://abb_irbt4004_support/meshes/irbt4004/visual/Track_Mid.stl"/>
         </geometry>
         <xacro:material_abb_orange />
       </visual>
       <collision>
-        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <origin xyz="-2.5 0 0" rpy="0 0 0"/>
         <geometry>
           <mesh filename="package://abb_irbt4004_support/meshes/irbt4004/collision/Track_Mid.stl"/>
         </geometry>
@@ -78,79 +77,66 @@
       </collision>
     </link>
 
-    <!--Right section-->
-<!--    <link name="${prefix}track_right">
+    <link name="${prefix}track_mid_4">
       <visual>
-        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <origin xyz="-2.5 0 0" rpy="0 0 0"/>
         <geometry>
-          <mesh filename="package://abb_irbt4004_support/meshes/irbt4004/visual/Track_End.stl"/>
+          <mesh filename="package://abb_irbt4004_support/meshes/irbt4004/visual/Track_Mid.stl"/>
         </geometry>
         <xacro:material_abb_orange />
       </visual>
       <collision>
-        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <origin xyz="-2.5 0 0" rpy="0 0 0"/>
         <geometry>
-          <mesh filename="package://abb_irbt4004_support/meshes/irbt4004/collision/Track_End.stl"/>
+          <mesh filename="package://abb_irbt4004_support/meshes/irbt4004/collision/Track_Mid.stl"/>
         </geometry>
         <xacro:material_abb_orange />
-      </collision>
-    </link>-->
-
-    <!--Left carriage-->
-    <link name="${prefix}carriage">
-      <visual>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
-        <geometry>
-          <mesh filename="package://abb_irbt4004_support/meshes/irbt4004/visual/Carriage_left.stl"/>
-        </geometry>
-        <xacro:material_abb_dark_gray />
-      </visual>
-      <collision>
-        <origin xyz="0 0 0" rpy="0 0 0"/>
-        <geometry>
-          <mesh filename="package://abb_irbt4004_support/meshes/irbt4004/collision/Carriage_left.stl"/>
-        </geometry>
-        <xacro:material_abb_dark_gray />
       </collision>
     </link>
 
     <!--Right carriage-->
-<!--    <link name="${prefix}carriage2">
+    <link name="${prefix}carriage">
       <visual>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <origin xyz="-0.5 0 0" rpy="0 0 0"/>
         <geometry>
           <mesh filename="package://abb_irbt4004_support/meshes/irbt4004/visual/Carriage_right.stl"/>
         </geometry>
         <xacro:material_abb_dark_gray />
       </visual>
       <collision>
-        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <origin xyz="-0.5 0 0" rpy="0 0 0"/>
         <geometry>
           <mesh filename="package://abb_irbt4004_support/meshes/irbt4004/collision/Carriage_right.stl"/>
         </geometry>
         <xacro:material_abb_dark_gray />
       </collision>
-    </link>-->
+    </link>
 
     <!-- end of link list -->
 
     <!-- joint list -->
     <joint name="${prefix}fixed_track_mid_1" type="fixed">
-      <parent link="${prefix}track_left"/>
+      <parent link="${prefix}track_right"/>
       <child link="${prefix}track_mid_1"/>
-      <origin xyz="0.000 0.000 0.000" rpy="0 0 0"/>
+      <origin xyz="-1.000 0.000 0.000" rpy="0 0 0"/>
     </joint>
 
     <joint name="${prefix}fixed_track_mid_2" type="fixed">
       <parent link="${prefix}track_mid_1"/>
       <child link="${prefix}track_mid_2"/>
-      <origin xyz="1.000 0.000 0.000" rpy="0 0 0"/>
+      <origin xyz="-1.000 0.000 0.000" rpy="0 0 0"/>
     </joint>
 
     <joint name="${prefix}fixed_track_mid_3" type="fixed">
       <parent link="${prefix}track_mid_2"/>
       <child link="${prefix}track_mid_3"/>
-      <origin xyz="1.000 0.000 0.000" rpy="0 0 0"/>
+      <origin xyz="-1.000 0.000 0.000" rpy="0 0 0"/>
+    </joint>
+
+    <joint name="${prefix}fixed_track_mid_4" type="fixed">
+      <parent link="${prefix}track_mid_3"/>
+      <child link="${prefix}track_mid_4"/>
+      <origin xyz="-1.000 0.000 0.000" rpy="0 0 0"/>
     </joint>
 
     <!--Track end-->
@@ -162,10 +148,10 @@
 
     <!--Left carriage-->
     <joint name="${prefix}joint_carriage" type="prismatic">
-      <parent link="${prefix}track_left"/>
+      <parent link="${prefix}track_right"/>
       <child link="${prefix}carriage"/>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
-      <axis xyz="1 0 0"/>
+      <origin xyz="-0.1 0 0" rpy="0 0 0"/>
+      <axis xyz="-1 0 0"/>
       <limit effort="0" lower="0.000" upper="3.900" velocity="2.000"/> <!-- Product specification - IRBT 4004/6004/7004 -->
     </joint>
 

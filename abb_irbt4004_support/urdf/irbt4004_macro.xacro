@@ -6,9 +6,6 @@
 
   <xacro:macro name="abb_irbt4004" params="prefix">
 
-    <!-- link zero-->
-<!--    <link name="${prefix}world"/>-->
-
     <!-- link list -->
     <link name="${prefix}track_left"> <!--track_start-->
       <visual>
@@ -79,7 +76,7 @@
     </link>
 
     <!--Right section-->
-<!--    <link name="${prefix}track_right">
+    <!--<link name="${prefix}track_right">
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
@@ -115,7 +112,7 @@
     </link>
 
     <!--Right carriage-->
-<!--    <link name="${prefix}carriage2">
+    <!--<link name="${prefix}carriage2">
       <visual>
       <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
@@ -132,6 +129,7 @@
       </collision>
     </link>-->
 
+    <link name="${prefix}carriage_interface"/>
     <!-- end of link list -->
 
     <!-- joint list -->
@@ -154,13 +152,13 @@
     </joint>
 
     <!--Track end-->
-<!--    <joint name="${prefix}fixed_track_right" type="fixed">
+    <!--<joint name="${prefix}fixed_track_right" type="fixed">
       <parent link="${prefix}track_mid_3"/>
       <child link="${prefix}track_right"/>
       <origin xyz="1.000 0.000 0.000" rpy="0 0 0"/>
     </joint>-->
 
-    <!--Left carriage-->
+    <!--carriage-->
     <joint name="${prefix}joint_carriage" type="prismatic">
       <parent link="${prefix}track_left"/>
       <child link="${prefix}carriage"/>
@@ -169,24 +167,13 @@
       <limit effort="0" lower="0.000" upper="3.900" velocity="2.000"/> <!-- Product specification - IRBT 4004/6004/7004 -->
     </joint>
 
-    <!--Right carriage-->
-<!--    <joint name="${prefix}joint_carriage2" type="prismatic">
-      <parent link="${prefix}track_right"/>
-      <child link="${prefix}carriage2"/>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
-      <axis xyz="-1 0 0"/>
-      <limit effort="0" lower="0.000" upper="3.700" velocity="2.000"/>
-    </joint>-->
-
-
-<!-- offset to center base plate for robot mounting position
-    <joint name="${prefix}fixed_base_link" type="fixed">
+    <!-- Robot interface point -->
+    <joint name="${prefix}carriage_interface_link" type="fixed">
       <parent link="${prefix}carriage"/>
-      <child link="${prefix}base_link"/>
-      <origin xyz="0.3955 0.560 0.3745" rpy="0 0 1.57079632"/>
-    </joint>-->
+      <child link="${prefix}carriage_interface"/>
+      <origin xyz="0.3955 0.560 0.3745" rpy="0 0 1.57079632" />
+    </joint>
     <!-- end of joint list -->
-
 
   </xacro:macro>
 </robot>

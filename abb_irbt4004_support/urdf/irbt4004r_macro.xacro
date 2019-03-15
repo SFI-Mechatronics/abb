@@ -144,7 +144,8 @@
       <child link="${prefix}carriage"/>
       <origin xyz="-0.1 0 0" rpy="0 0 0"/>
       <axis xyz="-1 0 0"/>
-      <limit effort="0" lower="0.000" upper="3.900" velocity="2.000"/> <!-- Product specification - IRBT 4004/6004/7004 -->
+      <limit effort="0" lower="0.000" upper="3.400" velocity="2.000"/> <!-- REDUCED LIMIT -->
+      <!--<limit effort="0" lower="0.000" upper="3.900" velocity="2.000"/>--> <!-- Product specification - IRBT 4004/6004/7004 -->
     </joint>
 
     <!-- Robot interface point -->

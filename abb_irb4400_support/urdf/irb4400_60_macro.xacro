@@ -160,7 +160,8 @@
       <parent link="${prefix}link_5"/>
       <child link="${prefix}link_6"/>
       <axis xyz="1 0 0"/>
-      <limit effort="0" lower="-6.9813" upper="6.9813" velocity="5.7596"/>
+      <limit effort="0" lower="-3.1415" upper="3.1415" velocity="5.7596"/>  <!--reduced to 180deg-->
+<!--      <limit effort="0" lower="-6.9813" upper="6.9813" velocity="5.7596"/>--> <!--spec-->
     </joint>
     <joint name="${prefix}joint_6-tool0" type="fixed">
       <parent link="${prefix}link_6"/>

@@ -138,7 +138,10 @@
       <parent link="${prefix}link_2"/>
       <child link="${prefix}link_3"/>
       <axis xyz="0 1 0"/>
-      <limit effort="0" lower="-1.0472" upper="1.1345" velocity="2.0944"/>
+      <limit effort="0" lower="-0.2" upper="1.1345" velocity="2.0944"/> <!--less than robotstudio to avoid out of range-->
+<!--      <limit effort="0" lower="-0.523599" upper="1.1345" velocity="2.0944"/>--> <!--robotstudio-->
+<!--      <limit effort="0" lower="-1.0472" upper="1.1345" velocity="2.0944"/> -->
+
     </joint>
     <joint name="${prefix}joint_4" type="revolute">
     <!--  <origin xyz="1.38 0 0.15" rpy="0 0 0"/> IRB4400/L10-->

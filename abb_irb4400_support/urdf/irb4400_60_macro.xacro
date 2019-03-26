@@ -115,6 +115,39 @@
         <xacro:material_abb_yellow />
       </collision>
     </link>
+    <link name="${prefix}link_d1">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://abb_irb4400_support/meshes/irb4400_60/visual/link_d1.stl"/>
+        </geometry>
+        <xacro:material_abb_orange />
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://abb_irb4400_support/meshes/irb4400_60/collision/link_d1.stl"/>
+        </geometry>
+        <xacro:material_abb_yellow />
+      </collision>
+    </link>
+    <link name="${prefix}link_d2">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://abb_irb4400_support/meshes/irb4400_60/visual/link_d2.stl"/>
+        </geometry>
+        <xacro:material_abb_orange />
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://abb_irb4400_support/meshes/irb4400_60/collision/link_d2.stl"/>
+        </geometry>
+        <xacro:material_abb_yellow />
+      </collision>
+    </link>
+
     <link name="${prefix}tool0"/>
     <!-- end of link list -->
 
@@ -171,6 +204,23 @@
       <child link="${prefix}tool0"/>
       <origin xyz="0.14 0 0" rpy="0 0 0"/>
     </joint>
+
+    <joint name="${prefix}joint_d2" type="continuous" >
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <axis xyz="0 1 0"/>
+      <parent link="${prefix}link_2"/>
+      <child link="${prefix}link_d2"/>
+      <mimic joint="${prefix}joint_3" multiplier="1.0"/>
+    </joint>
+    <joint name="${prefix}joint_d1" type="continuous" >
+      <origin xyz="-0.3 0 0" rpy="0 0 0"/>
+      <axis xyz="0 1 0"/>
+      <parent link="${prefix}link_d2"/>
+      <child link="${prefix}link_d1"/>
+      <mimic joint="${prefix}joint_3" multiplier="-1.0"/>
+    </joint>
+
+
     <!-- end of joint list -->
 
     <!-- ROS base_link to ABB World Coordinates transform -->

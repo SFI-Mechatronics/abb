@@ -109,6 +109,104 @@
         <xacro:material_abb_dark_gray />
       </collision>
     </link>
+    <link name="${prefix}belt_loop">
+      <visual>
+      <origin xyz="-0.5 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://abb_irbt4004_support/meshes/irbt4004/visual/Belt_right_loop.stl"/>
+        </geometry>
+        <xacro:material_abb_dark_gray />
+      </visual>
+      <collision>
+        <origin xyz="-0.5 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://abb_irbt4004_support/meshes/irbt4004/collision/Belt_right_loop.stl"/>
+        </geometry>
+        <xacro:material_abb_dark_gray />
+      </collision>
+    </link>
+    <link name="${prefix}belt_0">
+      <visual>
+      <origin xyz="-0.5 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://abb_irbt4004_support/meshes/irbt4004/visual/Belt_right_ext.stl"/>
+        </geometry>
+        <xacro:material_abb_dark_gray />
+      </visual>
+      <collision>
+        <origin xyz="-0.5 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://abb_irbt4004_support/meshes/irbt4004/collision/Belt_right_ext.stl"/>
+        </geometry>
+        <xacro:material_abb_dark_gray />
+      </collision>
+    </link>
+    <link name="${prefix}belt_1">
+      <visual>
+      <origin xyz="-0.5 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://abb_irbt4004_support/meshes/irbt4004/visual/Belt_right_ext.stl"/>
+        </geometry>
+        <xacro:material_abb_dark_gray />
+      </visual>
+      <collision>
+        <origin xyz="-0.5 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://abb_irbt4004_support/meshes/irbt4004/collision/Belt_right_ext.stl"/>
+        </geometry>
+        <xacro:material_abb_dark_gray />
+      </collision>
+    </link>
+    <link name="${prefix}belt_2">
+      <visual>
+      <origin xyz="-0.5 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://abb_irbt4004_support/meshes/irbt4004/visual/Belt_right_ext.stl"/>
+        </geometry>
+        <xacro:material_abb_dark_gray />
+      </visual>
+      <collision>
+        <origin xyz="-0.5 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://abb_irbt4004_support/meshes/irbt4004/collision/Belt_right_ext.stl"/>
+        </geometry>
+        <xacro:material_abb_dark_gray />
+      </collision>
+    </link>
+    <link name="${prefix}belt_3">
+      <visual>
+      <origin xyz="-0.5 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://abb_irbt4004_support/meshes/irbt4004/visual/Belt_right_ext.stl"/>
+        </geometry>
+        <xacro:material_abb_dark_gray />
+      </visual>
+      <collision>
+        <origin xyz="-0.5 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://abb_irbt4004_support/meshes/irbt4004/collision/Belt_right_ext.stl"/>
+        </geometry>
+        <xacro:material_abb_dark_gray />
+      </collision>
+    </link>
+    <link name="${prefix}belt_4">
+      <visual>
+      <origin xyz="-0.5 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://abb_irbt4004_support/meshes/irbt4004/visual/Belt_right_ext.stl"/>
+        </geometry>
+        <xacro:material_abb_dark_gray />
+      </visual>
+      <collision>
+        <origin xyz="-0.5 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://abb_irbt4004_support/meshes/irbt4004/collision/Belt_right_ext.stl"/>
+        </geometry>
+        <xacro:material_abb_dark_gray />
+      </collision>
+    </link>
+
+
 
     <link name="${prefix}carriage_interface"/>
     <!-- end of link list -->
@@ -144,9 +242,59 @@
       <child link="${prefix}carriage"/>
       <origin xyz="-0.1 0 0" rpy="0 0 0"/>
       <axis xyz="-1 0 0"/>
-      <limit effort="0" lower="0.000" upper="3.400" velocity="2.000"/> <!-- REDUCED LIMIT -->
-      <!--<limit effort="0" lower="0.000" upper="3.900" velocity="2.000"/>--> <!-- Product specification - IRBT 4004/6004/7004 -->
+      <limit effort="0" lower="0.000" upper="3.900" velocity="2.000"/> <!-- Product specification - IRBT 4004/6004/7004 -->
     </joint>
+    <joint name="${prefix}joint_belt_loop" type="prismatic">
+      <parent link="${prefix}track_right"/>
+      <child link="${prefix}belt_loop"/>
+      <origin xyz="-0.1 0 0" rpy="0 0 0"/>
+      <axis xyz="-1 0 0"/>
+      <limit effort="0" lower="0.000" upper="3.900" velocity="2.000"/>
+      <mimic joint="${prefix}joint_carriage" multiplier="0.5"/>
+    </joint>
+    <joint name="${prefix}joint_belt_0" type="prismatic">
+      <parent link="${prefix}track_right"/>
+      <child link="${prefix}belt_0"/>
+      <origin xyz="-0.1 0 0" rpy="0 0 0"/>
+      <axis xyz="-1 0 0"/>
+      <limit effort="0" lower="0.000" upper="3.900" velocity="2.000"/>
+      <mimic joint="${prefix}joint_carriage" multiplier="0.5"/>
+    </joint>
+    <joint name="${prefix}joint_belt_1" type="prismatic">
+      <parent link="${prefix}track_right"/>
+      <child link="${prefix}belt_1"/>
+      <origin xyz="-0.1 0 0" rpy="0 0 0"/>
+      <axis xyz="-1 0 0"/>
+      <limit effort="0" lower="0.000" upper="3.900" velocity="2.000"/>
+      <mimic joint="${prefix}joint_carriage" multiplier="0.625"/>
+    </joint>
+    <joint name="${prefix}joint_belt_2" type="prismatic">
+      <parent link="${prefix}track_right"/>
+      <child link="${prefix}belt_2"/>
+      <origin xyz="-0.1 0 0" rpy="0 0 0"/>
+      <axis xyz="-1 0 0"/>
+      <limit effort="0" lower="0.000" upper="3.900" velocity="2.000"/>
+      <mimic joint="${prefix}joint_carriage" multiplier="0.75"/>
+    </joint>
+    <joint name="${prefix}joint_belt_3" type="prismatic">
+      <parent link="${prefix}track_right"/>
+      <child link="${prefix}belt_3"/>
+      <origin xyz="-0.1 0 0" rpy="0 0 0"/>
+      <axis xyz="-1 0 0"/>
+      <limit effort="0" lower="0.000" upper="3.900" velocity="2.000"/>
+      <mimic joint="${prefix}joint_carriage" multiplier="0.875"/>
+    </joint>
+    <joint name="${prefix}joint_belt_4" type="prismatic">
+      <parent link="${prefix}track_right"/>
+      <child link="${prefix}belt_4"/>
+      <origin xyz="-0.1 0 0" rpy="0 0 0"/>
+      <axis xyz="-1 0 0"/>
+      <limit effort="0" lower="0.500" upper="3.900" velocity="2.000"/>
+      <mimic joint="${prefix}joint_carriage" multiplier="1.0"/>
+    </joint>
+
+
+
 
     <!-- Robot interface point -->
     <joint name="${prefix}carriage_interface_link" type="fixed">

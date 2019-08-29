@@ -109,6 +109,15 @@
         <xacro:material_abb_dark_gray />
       </collision>
     </link>
+    <link name="${prefix}belt_collision">
+        <collision>
+            <origin xyz="-1.85 -0.20 0.3" rpy="0 0 0"/>
+            <geometry>
+                <box size="5.80 0.40 0.6"/>
+            </geometry>
+            <xacro:material_abb_dark_gray />
+        </collision>
+    </link>
     <link name="${prefix}belt_loop">
       <visual>
       <origin xyz="-0.6 0 0" rpy="0 0 0"/>
@@ -117,13 +126,13 @@
         </geometry>
         <xacro:material_abb_dark_gray />
       </visual>
-      <collision>
+<!--      <collision>
         <origin xyz="-0.6 0 0" rpy="0 0 0"/>
         <geometry>
           <mesh filename="package://abb_irbt4004_support/meshes/irbt4004/collision/Belt_right_loop.stl"/>
         </geometry>
         <xacro:material_abb_dark_gray />
-      </collision>
+      </collision>-->
     </link>
     <link name="${prefix}belt_0">
       <visual>
@@ -133,13 +142,13 @@
         </geometry>
         <xacro:material_abb_dark_gray />
       </visual>
-      <collision>
+<!--      <collision>
         <origin xyz="-0.6 0 0" rpy="0 0 0"/>
         <geometry>
           <mesh filename="package://abb_irbt4004_support/meshes/irbt4004/collision/Belt_right_ext.stl"/>
         </geometry>
         <xacro:material_abb_dark_gray />
-      </collision>
+      </collision>-->
     </link>
     <link name="${prefix}belt_1">
       <visual>
@@ -149,13 +158,13 @@
         </geometry>
         <xacro:material_abb_dark_gray />
       </visual>
-      <collision>
+<!--      <collision>
         <origin xyz="-0.6 0 0" rpy="0 0 0"/>
         <geometry>
           <mesh filename="package://abb_irbt4004_support/meshes/irbt4004/collision/Belt_right_ext.stl"/>
         </geometry>
         <xacro:material_abb_dark_gray />
-      </collision>
+      </collision>-->
     </link>
     <link name="${prefix}belt_2">
       <visual>
@@ -165,13 +174,13 @@
         </geometry>
         <xacro:material_abb_dark_gray />
       </visual>
-      <collision>
+<!--      <collision>
         <origin xyz="-0.6 0 0" rpy="0 0 0"/>
         <geometry>
           <mesh filename="package://abb_irbt4004_support/meshes/irbt4004/collision/Belt_right_ext.stl"/>
         </geometry>
         <xacro:material_abb_dark_gray />
-      </collision>
+      </collision>-->
     </link>
     <link name="${prefix}belt_3">
       <visual>
@@ -181,13 +190,13 @@
         </geometry>
         <xacro:material_abb_dark_gray />
       </visual>
-      <collision>
+<!--      <collision>
         <origin xyz="-0.6 0 0" rpy="0 0 0"/>
         <geometry>
           <mesh filename="package://abb_irbt4004_support/meshes/irbt4004/collision/Belt_right_ext.stl"/>
         </geometry>
         <xacro:material_abb_dark_gray />
-      </collision>
+      </collision>-->
     </link>
     <link name="${prefix}belt_4">
       <visual>
@@ -197,13 +206,13 @@
         </geometry>
         <xacro:material_abb_dark_gray />
       </visual>
-      <collision>
+<!--      <collision>
         <origin xyz="-0.6 0 0" rpy="0 0 0"/>
         <geometry>
           <mesh filename="package://abb_irbt4004_support/meshes/irbt4004/collision/Belt_right_ext.stl"/>
         </geometry>
         <xacro:material_abb_dark_gray />
-      </collision>
+      </collision>-->
     </link>
 
 
@@ -243,6 +252,11 @@
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <axis xyz="-1 0 0"/>
       <limit effort="0" lower="0.000" upper="3.900" velocity="2.000"/> <!-- Product specification - IRBT 4004/6004/7004 -->
+    </joint>
+    <joint name="${prefix}joint_belt_collision" type="fixed">
+      <parent link="${prefix}track_right"/>
+      <child link="${prefix}belt_collision"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
     </joint>
     <joint name="${prefix}joint_belt_loop" type="prismatic">
       <parent link="${prefix}track_right"/>
